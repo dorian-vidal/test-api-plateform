@@ -7,8 +7,13 @@ const Admin = () => {
   useEffect(() => {
     (async () => {
       const HydraAdmin = (await import("@api-platform/admin")).HydraAdmin;
+      const ResourceGuesser  = (await import("@api-platform/admin")).ResourceGuesser;
+      
 
-      setDynamicAdmin(<HydraAdmin entrypoint={window.origin}></HydraAdmin>);
+      setDynamicAdmin(<HydraAdmin entrypoint={window.origin}>
+       <ResourceGuesser name="movies"></ResourceGuesser> 
+       <ResourceGuesser name="categories"></ResourceGuesser> 
+      </HydraAdmin>);
     })();
   }, []);
 
